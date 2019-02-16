@@ -1,20 +1,18 @@
-public class Father {
+class Father extends Parent {
 
-    public int age;
-    public int base;
-    public double amount;
-    public double exp;
-    public double exp2; 
-    public double exp3;
-    public double tfsa;
+    private double tfsa;
 
-    public Father (int age, int base ) {
-        this.age = age;
-        this.base = base;
+    public Father (double [] params ) {
+        super(params);
+        tfsa = params[params.length - 1];
+        loyaltyrate = 0.12;
     }
 
-    public double AmountReturned() {
-        amount = base + age + (age * 0.12) - exp - exp2 - exp3 - (base * tfsa);
-        return amount;
+    public double salaryAfterDeductions() {
+        salaryAfterExpenses = baseSalary + (age * loyaltyrate) - firstExpense - secondExpense - thirdExpense - (baseSalary * tfsa);
+        return salaryAfterExpenses;
     }
+
+    public double calculateSavings() { return 0; }
+
 }

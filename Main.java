@@ -1,15 +1,22 @@
 public class Main {
 
+    private static double[][] females = {{30, 45000, 2500, 50, 150 },
+                                        {42, 77000, 1700, 20, 110},
+                                        {21, 38000, 1900, 50, 150 }};
+                                     
+    private static double[][] males = {{32, 62000, 4500, 25, 75, 0.15},
+                                        {42, 70000, 1000, 25, 75, 0.2},
+                                        {27, 87000, 2700, 55, 28, 0.30}};                                    
     public static void main (String[] args) {
-
+        /*
         Family house1 = new Family();
-        double[] h1 = house1.makeFamily(30, 45000, 2500, 50, 150, 32, 62000, 4500, 25, 75, 0.15);
+        double[] h1 = house1.makeFamily(couple[0]);
 
         Family house2 = new Family();
-        double[] h2 = house1.makeFamily(42, 77000, 1700, 20, 110, 32, 70000, 1000, 25, 75, 0.2);
+        double[] h2 = house1.makeFamily(couple[1]);
 
         Family house3 = new Family();
-        double[] h3 = house1.makeFamily(21, 38000, 1900, 50, 150, 27, 87000, 2700, 55, 28, 0.30);
+        double[] h3 = house1.makeFamily(couple[2]);
 
         //Greatest house income 
         double max = 0;
@@ -46,5 +53,6 @@ public class Main {
             max = h3[2]; 
         
         System.out.println("savings: " + max);
+        */
     }
 }
