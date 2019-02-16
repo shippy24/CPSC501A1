@@ -1,3 +1,5 @@
+import java.util.TreeMap;
+
 public class Main {
 
     private static double[][] females = {{30, 45000, 2500, 50, 150 },
@@ -6,53 +8,64 @@ public class Main {
                                      
     private static double[][] males = {{32, 62000, 4500, 25, 75, 0.15},
                                         {42, 70000, 1000, 25, 75, 0.2},
-                                        {27, 87000, 2700, 55, 28, 0.30}};                                    
+                                        {27, 87000, 2700, 55, 28, 0.30}};    
+                                        
+    private static TreeMap<Double, Double> savingsPercentageMap = new TreeMap<>();
+                                        
     public static void main (String[] args) {
-        /*
-        Family house1 = new Family();
-        double[] h1 = house1.makeFamily(couple[0]);
 
-        Family house2 = new Family();
-        double[] h2 = house1.makeFamily(couple[1]);
+        initializeMap();
 
-        Family house3 = new Family();
-        double[] h3 = house1.makeFamily(couple[2]);
-
-        //Greatest house income 
-        double max = 0;
-        if (h1[0] > 0 && h1[0] >= h2[0]) 
-            max = h1[0];
-        else 
-            max = h2[0];
-            
-        if (h3[0] > max) 
-            max = h3[0];  
-            
-        System.out.println("Greatest income: " + max);
-
-        //Greatest income after exp
-        max = 0;
-        if (h1[1] > 0 && h1[1] >= h2[1]) 
-            max = h1[1];
-        else 
-            max = h2[1];
-            
-        if (h3[1] > max) 
-            max = h3[1];     
+        Mother mom;
+        Father dad;
+        double maxBaseSalary = 0;
+        double maxDeductedSalary = 0;
+        double maxSavings = 0;
+        double savingsMultiplier;
         
-        System.out.println("After savings: " + max);
+        for (int i = 0; i < 3; i++) {
+            mom = new Mother(females[i]);
+            dad = new Father(males[i]);
 
-        //Greatest savings
-        max = 0;
-        if (h1[2] > 0 && h1[2] >= h2[2]) 
-            max = h1[2];
-        else 
-            max = h2[2];
+            //attain greatest base salary
+            if (mom.getBaseSalary() + dad.getBaseSalary() > maxBaseSalary ) {
+                maxBaseSalary = mom.getBaseSalary() + dad.getBaseSalary();
+            }
+            //attain greatest salary after deductions
+            if (mom.salaryAfterDeductions() + dad.salaryAfterDeductions() > maxDeductedSalary ) {
+                maxDeductedSalary = mom.salaryAfterDeductions() + dad.salaryAfterDeductions();
+            }  
+
+            //attain greatest savings
+            savingsMultiplier = savingsPercentageMap.floorEntry(females[i][0]).getValue();
+            mom.calculateSavings(savingsMultiplier);
+            savingsMultiplier = savingsPercentageMap.floorEntry(males[i][0]).getValue();
+            dad.calculateSavings(savingsMultiplier);
+
+            if (mom.getSavings() + dad.getSavings() > maxSavings ) {
+                maxSavings = mom.getSavings() + dad.getSavings();
+            } 
+        }
+
+         
             
-        if (h3[2] > max) 
-            max = h3[2]; 
+        System.out.println("Greatest income: " + maxBaseSalary);
+
+     
         
-        System.out.println("savings: " + max);
-        */
+        System.out.println("After savings: " + maxDeductedSalary);
+
+    
+        
+        System.out.println("savings: " + maxSavings);
+        
+    }
+
+    //REFACTORING TO USE MORE DATA STRUCTURES
+    public static void initializeMap(){
+        savingsPercentageMap.put(0.0, 0.0);
+        savingsPercentageMap.put(25.0, 0.05);
+        savingsPercentageMap.put(35.0, 0.08);
+        savingsPercentageMap.put(60.0, 0.15);
     }
 }

@@ -9,7 +9,9 @@ abstract class Parent {
     protected double savings;
     protected double loyaltyrate;
 
-    public Parent( double[] params){
+    public Parent( double[] params) throws RuntimeException {
+        if (params.length != 5 && params.length != 6)
+            throw new RuntimeException("params = Incorrect Number of Arguments");
         age = params[0];
         baseSalary = params[1];
         firstExpense = params[2];
@@ -20,6 +22,17 @@ abstract class Parent {
     public abstract double salaryAfterDeductions();
 
 
-    public abstract double calculateSavings();
+    public void calculateSavings(double multiplier) { savings = baseSalary * multiplier; }
+
+    /**
+     * @return the baseSalary
+     */
+    public double getBaseSalary() {
+        return baseSalary;
+    }
+
+    public double getSavings() {
+        return savings;
+    }
         
 }

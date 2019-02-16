@@ -11,5 +11,4 @@ class Mother extends Parent {
         return salaryAfterExpenses;
     }
 
-    public double calculateSavings() { return 0; }
 }
