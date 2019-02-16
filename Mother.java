@@ -1,7 +1,7 @@
 class Mother extends Parent {
 
 
-    public Mother (double[] params) {
+    public Mother (double[] params) throws RuntimeException {
         super(params);
         loyaltyrate = 0.15;
     }

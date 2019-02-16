@@ -2,7 +2,7 @@ class Father extends Parent {
 
     private double tfsa;
 
-    public Father (double [] params ) {
+    public Father (double [] params ) throws RuntimeException {
         super(params);
         tfsa = params[params.length - 1];
         loyaltyrate = 0.12;
